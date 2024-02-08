@@ -19,16 +19,18 @@ function compareNumbers() {
     if (userGuess === testNumber) {
         console.log("match");
         message.textContent = "match";
+    } else if (userGuess < testNumber) {
+        message.textContent = "guess higher"
     } else {
         console.log("no match");
-        message.textContent = "no match";
+        message.textContent = "guess lower";
     }
 }
 
 document.querySelector('#submit').addEventListener('click', compareNumbers)
 document.querySelector('#number').addEventListener('keydown', clearMessage)
 
-
+console.log(randomNumber);
 
 
 
