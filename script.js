@@ -1,6 +1,6 @@
 let userGuess;
 let userAttempts = 5;
-let randomNumber = Math.floor(Math.random() * 20);
+let randomNumber;
 let testNumber = 13;
 const message = document.querySelector('#message')
 
@@ -9,6 +9,9 @@ function getUserGuess() {
     userGuess = Number(document.querySelector('#number').value);
     console.log(userGuess);
 }
+
+
+generateRandomNumber = () => { return Math.floor(Math.random() * 20); }
 
 
 function clearMessage() {
