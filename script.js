@@ -1,4 +1,5 @@
 let userGuess;
+let userAttempts = 5;
 let randomNumber = Math.floor(Math.random() * 20);
 let testNumber = 13;
 const message = document.querySelector('#message')
@@ -9,28 +10,38 @@ function getUserGuess() {
     console.log(userGuess);
 }
 
+
 function clearMessage() {
     document.querySelector("#message").innerHTML = "";
 }
 
-function compareNumbers() {
 
+function compareNumbers() {
     getUserGuess();
-    if (userGuess === testNumber) {
+    if (userGuess === randomNumber) {
         console.log("match");
         message.textContent = "match";
-    } else if (userGuess < testNumber) {
-        message.textContent = "guess higher"
+    } else if (userGuess < randomNumber) {
+        message.textContent = `guess higher, ${userAttempts} attempt(s) remaining`;
+        userAttempts--;
     } else {
-        console.log("no match");
-        message.textContent = "guess lower";
+        message.textContent = `guess lower, ${userAttempts} attempt(s) remaining`;
+        userAttempts--;
     }
 }
 
-document.querySelector('#submit').addEventListener('click', compareNumbers)
-document.querySelector('#number').addEventListener('keydown', clearMessage)
+
+function continueGame() {
+    if (userAttempts > 0) {
+        compareNumbers();
+    } else {
+        message.textContent = `game over, ${userAttempts} attempt(s) remaining`;
+    }
+}
+
 
 console.log(randomNumber);
 
 
-
+document.querySelector('#submit').addEventListener('click', continueGame)
+document.querySelector('#number').addEventListener('keydown', clearMessage)
