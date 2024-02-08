@@ -1,8 +1,10 @@
 let userGuess;
-let userAttempts = 5;
+let userAttempts = 4;
 let randomNumber;
 let testNumber = 13;
-const message = document.querySelector('#message')
+let resetBtn = document.createElement("input");
+let submitBtn = document.querySelector("#submit");
+const message = document.querySelector('#message');
 
 
 function getUserGuess() {
@@ -34,15 +36,30 @@ function compareNumbers() {
 }
 
 
+function playAgain() {
+    message.textContent = "";
+    userAttempts = 5;
+    randomNumber = generateRandomNumber();
+    console.log(randomNumber);
+}
+
+
 function continueGame() {
     if (userAttempts > 0) {
         compareNumbers();
     } else {
-        message.textContent = `game over, ${userAttempts} attempt(s) remaining`;
+        resetBtn.type = "submit";
+        resetBtn.value = "Reset";
+        resetBtn.id = "reset"
+        submitBtn.after(resetBtn);
+
+        message.textContent = `game over, ${userAttempts} attempt(s) remaining if you would like to play again, click the reset`;
+        document.querySelector('#reset').addEventListener('click', playAgain, continueGame)
     }
 }
 
 
+randomNumber = generateRandomNumber();
 console.log(randomNumber);
 
 
