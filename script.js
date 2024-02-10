@@ -4,8 +4,12 @@ let randomNumber;
 let testNumber = 13;
 let resetBtn = document.createElement("input");
 let submitBtn = document.querySelector("#submit");
-const highScores = [];
+let highScores = [];
+let sortedScores = [];
 const message = document.querySelector("#message");
+const firstScore = document.querySelector("#firstScore");
+const secondScore = document.querySelector("#secondScore");
+const thirdScore = document.querySelector("#thirdScore");
 
 function getUserGuess() {
   userGuess = Number(document.querySelector("#number").value);
@@ -36,6 +40,7 @@ function compareNumbers() {
     addResetBtn();
     pushHighScore(userAttempts);
     toggleSubmitBtn();
+    displayHighScore();
     document.querySelector("#reset").addEventListener("click", playAgain);
   } else if (userGuess < randomNumber) {
     message.textContent = `guess higher, ${userAttempts} attempt(s) remaining`;
@@ -76,7 +81,21 @@ function continueGame() {
 
 function pushHighScore(score) {
   highScores.push(score);
+  highScores.sort().reverse();
   console.log(highScores);
+}
+
+function displayHighScore() {
+  sortedScores = highScores.slice(0, 3);
+  if (sortedScores[0]) {
+    firstScore.innerHTML = sortedScores[0];
+  }
+  if (sortedScores[1]) {
+    secondScore.innerHTML = sortedScores[1];
+  }
+  if (sortedScores[2]) {
+    thirdScore.innerHTML = sortedScores[2];
+  }
 }
 
 randomNumber = generateRandomNumber();
