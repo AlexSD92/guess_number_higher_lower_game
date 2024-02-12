@@ -3,9 +3,10 @@ let userAttempts = 5;
 let randomNumber;
 let testNumber = 13;
 let resetBtn = document.createElement("input");
-let submitBtn = document.querySelector("#submit");
+let leaderBoard = document.createElement("h2");
 let highScores = [];
 let sortedScores = [];
+const submitBtn = document.querySelector("#submit");
 const message = document.querySelector("#message");
 const firstScore = document.querySelector("#firstScore");
 const secondScore = document.querySelector("#secondScore");
@@ -89,6 +90,8 @@ function displayHighScore() {
   sortedScores = highScores.slice(0, 3);
   if (sortedScores[0]) {
     firstScore.innerHTML = `1<sup>st</sup> place: ${sortedScores[0]}`;
+    leaderBoard.innerHTML = "leaderboard";
+    firstScore.insertAdjacentElement("beforebegin", leaderBoard);
   }
   if (sortedScores[1]) {
     secondScore.innerHTML = `2<sup>nd</sup> place: ${sortedScores[1]}`;
