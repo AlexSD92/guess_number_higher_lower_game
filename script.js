@@ -1,5 +1,5 @@
 let userGuess;
-let userAttempts = 4;
+let userAttempts = 5;
 let randomNumber;
 let testNumber = 13;
 let resetBtn = document.createElement("input");
@@ -88,13 +88,13 @@ function pushHighScore(score) {
 function displayHighScore() {
   sortedScores = highScores.slice(0, 3);
   if (sortedScores[0]) {
-    firstScore.innerHTML = sortedScores[0];
+    firstScore.innerHTML = `1<sup>st</sup> place: ${sortedScores[0]}`;
   }
   if (sortedScores[1]) {
-    secondScore.innerHTML = sortedScores[1];
+    secondScore.innerHTML = `2<sup>nd</sup> place: ${sortedScores[1]}`;
   }
   if (sortedScores[2]) {
-    thirdScore.innerHTML = sortedScores[2];
+    thirdScore.innerHTML = `3<sup>rd</sup> place: ${sortedScores[2]}`;
   }
 }
 
