@@ -26,7 +26,7 @@ function clearMessage() {
 
 function toggleSubmitBtn() {
   if (submitBtn.style.display === "none") {
-    submitBtn.style.display = "block";
+    submitBtn.style.display = "inline";
   } else {
     submitBtn.style.display = "none";
   }
